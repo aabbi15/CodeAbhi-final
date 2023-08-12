@@ -4,20 +4,47 @@ import Header from '../header';
 
 
 import '../globals.css'
-
+import {toast } from "react-toastify"; 
+import '../_app'
 
 
 export default  function Page(){
     
     const [email,Setemail] = useState('');
     const [password,Setpassword] = useState('');
+    const[sendalert,Setsendalert] = useState('');
+    const alert = () => {
+
+      if(sendalert)
+      {return(
+        <div className="flex items-center p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300 dark:border-yellow-800" role="alert">
+        <svg className="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span className="sr-only">Info</span>
+        <div>
+          <span className="font-medium">Warning alert!</span> {sendalert}
+        </div>
+      </div>
+      );
+      }
+      else {
+        return(
+          <></>
+        )
+      }
+    }
 
     async function handleLogin(){
+      
+
       const user = {
         
         email:email,
         password:password
       }
+
+
        
       fetch ("http://localhost:5173/login", {
         
@@ -29,9 +56,18 @@ export default  function Page(){
       }).then(
         (response) => {
          console.log("fetched");
+        
          return response.json();
+         
         
         }).then(data => {
+          if(data.status!=200){
+            Setsendalert(data.msg);
+           }
+           else{
+            Setsendalert('');
+            
+           }
           
            if(data.url) {
             console.log(data.url);
@@ -67,12 +103,15 @@ export default  function Page(){
                       <label  className="input-label" >Password</label>
                       <input value={password} onChange={(e) => Setpassword(e.target.value)} type="password" name="password" id="password" placeholder="••••••••" className="input-box" required=""/>
                   </div>
+                  {alert()}
                   
                   <button  type ="button" onClick={handleLogin} className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 ">Login Now</button>
                   <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                       New to CodeAbhi? <a href="/signup" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Create an account here</a>
                   </p>
+                 
               </form>
+              
           </div>
         </div>
         </div>

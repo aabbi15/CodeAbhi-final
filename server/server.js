@@ -1,10 +1,12 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const MY_KEY = "AbhishekAbbi";
+// const popupS = require('popups');
 
 const cors = require('cors');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+
 
 const app = express();
 const port = 5173;
@@ -38,21 +40,28 @@ app.use(cookieParser());
 
 
 const auth = async (req, res, next) => {
-
+  
 
 
   const authHeader = req.cookies.authorization;
   if (!authHeader) {
-    return res.status(403).json({ msg: "missing token" });
+    req.body.msg="no";
+
+   
+    return res.status(403).json({ msg: "no" });
   }
 
   const decoded = jwt.decode(authHeader, MY_KEY);
 
   if (!decoded._id) {
-    return res.status(400).json({ msg: "wrong token" });
+    req.body.msg="no";
+    return res.status(400).json({ msg: "no" });
   }
 
+  req.body.msg="yes";
+
   req.body.userid = decoded._id;
+
   console.log("user authenticated");
 
   next();
@@ -83,10 +92,12 @@ app.post('/signup', async function (req, res) {
   const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
+  
 
 
   if (!email || !password) {
     res.status(400).json({ msg: 'Missing input' })
+    return;
   }
 
   let alreadyexist = await User.findOne({ email: email });
@@ -95,7 +106,7 @@ app.post('/signup', async function (req, res) {
 
   if (alreadyexist) {
 
-    res.status(409).json({ msg: 'user already exist' })
+    res.status(409).json({ msg: 'This email already exists' })
     return;
   }
   const NewUser = new User({
@@ -136,23 +147,24 @@ app.post('/login', async function (req, res) {
   const password = req.body.password;
 
   if (!email || !password) {
-    res.status(400).json({ msg: 'missing input' })
+    res.status(400).json({ msg: 'Missing input' })
     return;
   }
 
   let curruser = await User.find({ email: email }).limit(1);
-  curruser = curruser[0].toJSON();
+ 
 
 
-  if (!curruser) {
-    res.status(404).json({ msg: 'no user found' })
+  if (!curruser[0]) {
+    res.status(404).json({ msg: 'Email not found' })
 
     return;
   }
 
-  if (curruser) {
+  if (curruser[0]) {
+    curruser = curruser[0].toJSON();
     if (curruser.password != password) {
-      res.status(409).json({ msg: 'Wrong id or password' })
+      res.status(409).json({ msg: 'Wrong email or password' })
       return;
     }
     else{
@@ -194,6 +206,14 @@ app.post("/problem/:probid",auth,async function(req, res) {
   const submission = req.body.submission;
   const userid = req.body.userid;
   const status = isCorrect?"ac" : "nac";
+  const msg = req.body.msg;
+
+  if(msg=="no"){
+    res.json({msg:msg});
+    return;
+  }
+  else{
+
 
   response = await Problem.findOne({no:no});
     
@@ -213,13 +233,16 @@ app.post("/problem/:probid",auth,async function(req, res) {
 
 
    newsubmission.save().then(result =>{
-    res.json({submission,msg:"submitted"});
+    res.json({submission,msg:"submitted",url:`http://localhost:3000/submission/${newsubmission._id}`});
    }).catch(err=>console.log(err));
+  }
     
 });
 
 app.get("/submissions",auth,async (req,res) => {
   const userid = req.body.userid;
+  const msg = req.body.msg;
+  
   // console.log(userid + "userid");
   let usersubmission = await Submission.find({userid : userid});
 

@@ -41,6 +41,27 @@ export default function Header() {
 
 
     }
+
+    function Submissions() {
+        if (islogged) {
+            return (
+                <li>
+                            <a href="/submissions" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-blue-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Submissions</a>
+                        </li>
+                
+            );
+
+        }
+        else {
+            return (
+                <>
+                    
+                </>
+            )
+        }
+
+
+    }
     useEffect(() => {
         fetch('http://localhost:5173/authorize', {
             method: 'GET',
@@ -97,9 +118,7 @@ export default function Header() {
                         <li>
                             <a href="/problems" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-blue-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Problems</a>
                         </li>
-                        <li>
-                            <a href="/submissions" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-blue-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Submissions</a>
-                        </li>
+                        <Submissions/>
                         <li>
                             <a href="/contactme" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-blue-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact Me</a>
                         </li>

@@ -51,26 +51,26 @@ export default function Page() {
             const date = new Date(mysubmissions[i].createdAt);
             const mydate = date.toUTCString();
             rows.push(
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="w-4 p-4">
-                        <div class="flex items-center">
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <td className="w-4 p-4">
+                        <div className="flex items-center">
 
                             {statusupdate(i)}
 
                         </div>
                     </td>
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {mysubmissions[i].no}
                     </th>
-                    <td class="px-6 py-4">
+                    <td className="px-6 py-4">
                         {mysubmissions[i].name}
                     </td>
-                    <td class="px-6 py-4">
+                    <td className="px-6 py-4">
                         {mydate}
                     </td>
 
-                    <td class="px-6 py-4">
-                        <a href={`/submission/${mysubmissions[i]._id}`} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                    <td className="px-6 py-4">
+                        <a href={`/submission/${mysubmissions[i]._id}`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
                     </td>
                 </tr>
             )
@@ -84,25 +84,25 @@ export default function Page() {
             <Header />
 
 
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-5 bg-gray-900 border border-gray-500">
-                <table class="w-full  text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-900 dark:bg-gray-700 dark:text-gray-400">
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg m-5 bg-gray-900 border border-gray-500">
+                <table className="w-full  text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead className="text-xs text-gray-700 uppercase bg-gray-900 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="p-4">
-                                <div class="flex items-center">
+                            <th scope="col" className="p-4">
+                                <div className="flex items-center">
                                     Status
                                 </div>
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" className="px-6 py-3">
                                 Number
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" className="px-6 py-3">
                                 Name
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" className="px-6 py-3">
                                 Submission Date
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" className="px-6 py-3">
                                 Action
                             </th>
 
@@ -113,7 +113,7 @@ export default function Page() {
 
                     </tbody>
                 </table>
-                <nav class="flex items-center  justify-end py-2 bg-gray-900 " aria-label="Table navigation">
+                <nav className="flex items-center  justify-end py-2 bg-gray-900 " aria-label="Table navigation">
                 <ul className="inline-flex -space-x-px text-sm h-8">
                             <li>
                                 <button onClick={() => {setpage(Math.max(1,page-1))}} className="page-button rounded-l-lg">Previous</button>

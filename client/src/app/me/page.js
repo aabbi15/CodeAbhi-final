@@ -38,33 +38,33 @@ export default function Page() {
                 <div className=" w-screen bg-gray-900 border-3 border-solid flex items-center justify-center">
                     <div className='text-xl py-11 pl-4'>
 
-                        <div class="relative  overflow-x-auto shadow-md  sm:rounded-lg border-2 border-blue-300">
-                            <table class="rounded-lg text-md text-left text-gray-300 dark:text-gray-300 font-ext">
+                        <div className="relative  overflow-x-auto shadow-md  sm:rounded-lg border-2 border-blue-300">
+                            <table className="rounded-lg text-md text-left text-gray-300 dark:text-gray-300 font-ext">
                                
                                 <tbody className='bg-gray-900  '>
-                                    <tr class="border-b border-gray-200  dark:border-gray-700">
-                                        <td scope="row" class="w-44 px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                    <tr className="border-b border-gray-200  dark:border-gray-700">
+                                        <td scope="row" className="w-44 px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                             Name
                                         </td>
-                                        <td class="px-6 py-4 ">
+                                        <td className="px-6 py-4 ">
                                             {curruser.name}
                                         </td>
 
                                     </tr>
-                                    <tr class="border-b border-gray-200 dark:border-gray-700">
-                                        <td scope="row" class=" w-44 px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                    <tr className="border-b border-gray-200 dark:border-gray-700">
+                                        <td scope="row" className=" w-44 px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                             Email
                                         </td>
-                                        <td class="px-6 py-4 w-96 ">
+                                        <td className="px-6 py-4 w-96 ">
                                             {curruser.email}
                                         </td>
                                         
                                     </tr>
-                                    <tr class="border-b border-gray-200 dark:border-gray-700 max-w-sm">
-                                        <td scope="row" class=" px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                    <tr className="border-b border-gray-200 dark:border-gray-700 max-w-sm">
+                                        <td scope="row" className=" px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                             Joined at
                                         </td>
-                                        <td class="px-6 py-4">
+                                        <td className="px-6 py-4">
                                             {mydate}
                                         </td>
                                         
@@ -80,7 +80,7 @@ export default function Page() {
                 </div>
                 <div className=" pt-8 flex justify-center h-fill w-screen bg-gray-900 border-t-8 border-double border-gray-400">
                     <a href='/'>
-                        <button onClick={handleLogout} type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Logout</button>
+                        <button onClick={handleLogout} type="button" className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Logout</button>
                     </a>
 
                 </div>
