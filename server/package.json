@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "nodemon": "nodemon server.js",
-    "start": "./node_modules/.bin/netlify-lambda serve src",
+    "start": "node server.js",
     "build": "./node_modules/.bin/netlify-lambda build src"
   },
   "author": "",
@@ -17,6 +17,7 @@
     "cookie-parser": "^1.4.6",
     "cookieparser": "^0.1.0",
     "cors": "^2.8.5",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.4.2",
