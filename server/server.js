@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 
 
 const app = express();
-const port = 5173 || process.env.PORT;
+const port = 5173;
 const { User, Problem, Submission } = require('./models.js');
 
 
@@ -120,7 +120,7 @@ app.post('/signup', async function (req, res) {
   NewUser.save()
     .then(result => {
       console.log("Sign up done");
-      
+      res.json({url: 'http://localhost:3000/login'});
     })
     .catch(err => {
       res.send(err);
