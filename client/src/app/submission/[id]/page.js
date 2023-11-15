@@ -17,7 +17,6 @@ export default function Page() {
 
    const [mysubmission,Setmysubmission] = useState({});
    const submissionid = useParams().id;
-   console.log(submissionid);
    const problink = "/problem/"+mysubmission.no;
 
     useEffect(() => {

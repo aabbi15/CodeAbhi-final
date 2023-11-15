@@ -62,7 +62,7 @@ const auth = async (req, res, next) => {
 
   req.body.userid = decoded._id;
 
-  console.log("user authenticated");
+  // console.log("user authenticated");
 
   next();
 

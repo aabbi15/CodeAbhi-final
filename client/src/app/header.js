@@ -74,14 +74,12 @@ export default function Header() {
         }).then(
             data => {
                 if (!data.name) {
-                    console.log(data);
                     Setislogged(false);
                     return;
                     
 
 
                 }
-                console.log("cookie fetched");
                 Setname(data.name);
                 Setislogged(true);
             }

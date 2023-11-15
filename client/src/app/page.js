@@ -13,7 +13,6 @@ export default function Page(){
   useEffect(()=> {
     fetch('http://localhost:5173/').then(
       response => response.json().then(
-        data=>console.log(data)
       )
     )
 

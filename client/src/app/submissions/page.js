@@ -43,7 +43,7 @@ export default function Page() {
 
     function RowGenerator(page) {
         const mysize = mysubmissions.length;
-        console.log(mysize);
+        
         let rows = [];
         let start = 10 * (page - 1);
         let end = Math.min(start + 10, mysize);

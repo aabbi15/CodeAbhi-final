@@ -55,7 +55,6 @@ export default  function Page(){
         credentials: 'include',
       }).then(
         (response) => {
-         console.log("fetched");
         
          return response.json();
          
@@ -70,10 +69,8 @@ export default  function Page(){
            }
           
            if(data.url) {
-            console.log(data.url);
             window.location.replace(data.url);
            }
-           else console.log(data);
           })
         .catch(
         err=>{

@@ -15,7 +15,6 @@ export default function Page() {
         }).then(response =>
             response.json()
         ).then(data => {
-            console.log(data);
             Setcurruser(data.curruser);
         }).catch(err => console.log(err))
     }, []);

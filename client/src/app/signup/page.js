@@ -47,7 +47,6 @@ export default  function Page(){
         body: JSON.stringify(user)
       }).then(
         (response) => {
-         console.log("fetched");
          return response.json();
         
         }).then(data => {
@@ -62,7 +61,6 @@ export default  function Page(){
             console.log(data.url);
             window.location.replace(data.url);
            }
-           else console.log(data);
           }
         ).catch(
         err=>{

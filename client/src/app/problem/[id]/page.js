@@ -82,7 +82,6 @@ export default function Page(){
 
             }
             else{           
-            console.log(data.msg,data.submission)
             window.location.replace(data.url);
             }
         })
