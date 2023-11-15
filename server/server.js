@@ -1,7 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const MY_KEY = "AbhishekAbbi";
-// const popupS = require('popups');
+require('dotenv').config();
 
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -12,9 +11,10 @@ const app = express();
 const port = 5173;
 const { User, Problem, Submission } = require('./models.js');
 
+const MY_KEY = process.env.MY_KEY;
+const MONGOURL = process.env.MONGOURL;
 
-const mongoURL = "mongodb+srv://abhishekabbiwork:Wakanda4ever@codeabhi.5t1zaqe.mongodb.net/?retryWrites=true&w=majority";
-mongoose.connect(mongoURL).then(
+mongoose.connect(MONGOURL).then(
   result => {
     console.log("connected to mongodb");
   }
